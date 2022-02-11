@@ -1,5 +1,6 @@
 package human.demius.library.database.model;
 
+import human.demius.auth.database.model.User;
 import lombok.*;
 
 import javax.persistence.*;

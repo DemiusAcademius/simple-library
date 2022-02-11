@@ -1,5 +1,6 @@
-package human.demius.library.auth;
+package human.demius.auth.config;
 
+import human.demius.auth.beans.JwtUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

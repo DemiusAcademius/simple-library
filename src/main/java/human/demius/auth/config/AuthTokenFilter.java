@@ -1,5 +1,7 @@
-package human.demius.library.auth;
+package human.demius.auth.config;
 
+import human.demius.auth.beans.JwtTokenUtils;
+import human.demius.auth.beans.JwtUserDetailsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

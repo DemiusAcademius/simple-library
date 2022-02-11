@@ -1,4 +1,4 @@
-package human.demius.library.database.model;
+package human.demius.auth.database.model;
 
 import lombok.*;
 
@@ -15,9 +15,8 @@ import java.util.Set;
 @ToString
 @Getter
 @Setter
-public class Authrity {
+public class Authority {
     @Id
-    private short id;
     private String name;
 
     @ManyToMany(mappedBy = "userAuthorities")

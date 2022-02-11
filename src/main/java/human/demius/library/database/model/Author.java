@@ -1,5 +1,6 @@
 package human.demius.library.database.model;
 
+import human.demius.auth.database.model.Authority;
 import lombok.*;
 
 import javax.persistence.*;
@@ -22,5 +23,5 @@ public class Author {
             name = "book_authors",
             joinColumns = @JoinColumn(name = "author_id"),
             inverseJoinColumns = @JoinColumn(name = "book_isbn"))
-    Set<Authrity> writeBooks;
+    Set<Authority> writeBooks;
 }

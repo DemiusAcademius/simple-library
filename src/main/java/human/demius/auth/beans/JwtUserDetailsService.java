@@ -1,6 +1,7 @@
-package human.demius.library.auth;
+package human.demius.auth.beans;
 
-import human.demius.library.database.repos.UserRepository;
+import human.demius.auth.LibraryUserDetails;
+import human.demius.auth.database.repos.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -18,8 +19,8 @@ public class JwtUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        var user = userRepository.findByUsername(username)
+        var user = userRepository.findByName(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username));
-        return UserDetailsImpl.build(user);
+        return LibraryUserDetails.build(user);
     }
 }

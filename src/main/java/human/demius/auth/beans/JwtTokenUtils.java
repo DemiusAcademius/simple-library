@@ -1,5 +1,6 @@
-package human.demius.library.auth;
+package human.demius.auth.beans;
 
+import human.demius.auth.LibraryUserDetails;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +24,7 @@ public class JwtTokenUtils {
     private int jwtExpirationMs;
 
     public String generateJwtToken(Authentication authentication) {
-        UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
+        LibraryUserDetails userPrincipal = (LibraryUserDetails) authentication.getPrincipal();
         return Jwts.builder()
                 .setSubject((userPrincipal.getUsername()))
                 .setIssuedAt(new Date())

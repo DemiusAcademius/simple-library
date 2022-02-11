@@ -1,4 +1,4 @@
-package human.demius.library;
+package human.demius;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
