@@ -1,7 +1,7 @@
 ﻿INSERT INTO users (name, password) 
 VALUES ('demius',   '$2a$10$IVKyblCR8dxUtfvmxAM8euMlhL7gFsylISYp/7C01CRyPSDwOrKKu'), -- very-simple-pw in BCrypt
        ('marivanna','$2a$10$ErGvFMz0sQqFQ8tVL6.l.u5BRwUPLWAciHneThRJpdCjWeAgd6P6S'), -- marivanna10
-       ('vasea','$2a$10$/zGV.EAmsHOiyBqxTxzYOOwGmozx4yDCW1dsFUeIgVp8PE8QxyyPS'); -- vasea-pupkin
+       ('vasea',    '$2a$10$/zGV.EAmsHOiyBqxTxzYOOwGmozx4yDCW1dsFUeIgVp8PE8QxyyPS'); -- vasea-pupkin
 
 INSERT INTO authorities (name) 
 VALUES ('Administrator'),

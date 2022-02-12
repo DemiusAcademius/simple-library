@@ -5,8 +5,7 @@ DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS book_autors;
 
 CREATE TABLE IF NOT EXISTS authorities (
-  id SMALLSERIAL PRIMARY KEY,
-  name VARCHAR(50) UNIQUE NOT NULL
+  name VARCHAR(50) PRIMARY KEY
 );
 
 CREATE TABLE IF NOT EXISTS users (
@@ -17,8 +16,8 @@ CREATE TABLE IF NOT EXISTS users (
 
 CREATE TABLE IF NOT EXISTS user_authorities (
   user_id INT  NOT NULL,
-  authority_id SMALLINT NOT NULL,
-  FOREIGN KEY (authority_id) REFERENCES authorities (id),
+  authority_name VARCHAR(50) NOT NULL,
+  FOREIGN KEY (authority_name) REFERENCES authorities (name),
   FOREIGN KEY (user_id) REFERENCES users (id)
 );
 
