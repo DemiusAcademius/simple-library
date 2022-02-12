@@ -31,3 +31,9 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# internal frontend project
+/frontend/dist
+/frontend/tmp
+/frontend/node_modules
+/frontend/.angular/cache
