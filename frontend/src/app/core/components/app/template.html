@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand"
+           href="#">
+            ONLINE LIBRARY
+        </a>
+        <ng-container *ngIf="authentication.status === 'authorized'; else unauthorized">
+            {{ authentication.info.username }}
+        </ng-container>
+
+        <ng-template #unauthorized>
+            <button *ngIf="authentication.status === 'unauthorized'"
+                    type="button"
+                    class="btn btn-primary"
+                    (click)="switchToLogin()">LOG IN</button>
+        </ng-template>
+    </div>
+</nav>
+<router-outlet></router-outlet>

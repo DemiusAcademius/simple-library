@@ -5,6 +5,7 @@ import { BehaviorSubject, EMPTY, Observable, throwError } from 'rxjs'
 import { later } from '@app/core/utils/later'
 import { map } from 'rxjs/operators'
 import { Router } from '@angular/router'
+import { environment } from '@env/environment'
 
 export type LoginRequest = {
     username: string
@@ -63,22 +64,22 @@ export class AuthenticationService {
     startup() {
         const storageItem = sessionStorage.getItem(SESSION_STORAGE)
         if (storageItem) {
-            // TODO: analize last authorized
+            console.info(`startup; storage-item found`)
             const token = JSON.parse(storageItem)
             const options = {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             }
-            this.http.get<UserInfo>(`/api/auth/userinfo`, options)
+            this.http.get<UserInfo>(`${environment.api}/auth/userinfo`, options)
                 .subscribe(userInfo => this.switchToAuthorized({ ...userInfo, token }))
         } else {
-            this.switchToLogin()
+            console.info(`startup; storage-item not found`)
         }
     }
 
     login(body: LoginRequest): Observable<string | null> {
-        return this.http.post<AuthenticationInfo>(`/api/auth/login`, body)
+        return this.http.post<AuthenticationInfo>(`${environment.api}/auth/login`, body)
             .pipe(
                 map(response => {
                     sessionStorage.setItem(SESSION_STORAGE, JSON.stringify(response.token))
@@ -113,7 +114,7 @@ export class AuthenticationService {
         this.router.navigate(['home'])
     }
 
-    private switchToLogin() {
+    switchToLogin() {
         this.authentication.next({ status: 'login' })
         this.router.navigate(['login'])
     }

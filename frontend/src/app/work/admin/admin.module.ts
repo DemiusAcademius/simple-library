@@ -1,11 +1,11 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import { MainHomeComponent } from "./components/main";
+import { MainAdminComponent } from "./components/main";
 
 @NgModule({
     declarations: [
-        MainHomeComponent
+        MainAdminComponent
     ],
     imports: [
         CommonModule,
@@ -13,7 +13,7 @@ import { MainHomeComponent } from "./components/main";
 
     ],
     exports: [
-        MainHomeComponent
+        MainAdminComponent
     ]
 })
-export class AppHomeModule { }
+export class AppAdminModule { }
