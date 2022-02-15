@@ -4,9 +4,12 @@ package human.demius.auth;
 
 import human.demius.auth.beans.JwtTokenUtils;
 // import human.demius.auth.database.repos.UserRepository;
+import human.demius.auth.beans.JwtUserDetailsService;
 import human.demius.auth.payload.request.LoginRequest;
 import human.demius.auth.payload.response.JwtResponse;
 import human.demius.auth.payload.response.UserInfoResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -15,6 +18,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 // import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -24,6 +28,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
+    private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
+
     @Autowired
     AuthenticationManager authenticationManager;
     /*
@@ -56,11 +62,11 @@ public class AuthController {
     @GetMapping("/userinfo")
     public UserInfoResponse getUserInfo() {
         var authentication = SecurityContextHolder.getContext().getAuthentication();
-        LibraryUserDetails userDetails = (LibraryUserDetails) authentication.getDetails();
+        var prinipal = (LibraryUserDetails) authentication.getPrincipal();
 
-        List<String> roles = extractRolesFromUserDetails(userDetails);
+        List<String> roles = extractRolesFromUserDetails(prinipal);
 
-        return new UserInfoResponse(userDetails.getId(), userDetails.getUsername(), roles);
+        return new UserInfoResponse(prinipal.getId(), prinipal.getUsername(), roles);
     }
 
     private static List<String> extractRolesFromUserDetails(LibraryUserDetails userDetails) {

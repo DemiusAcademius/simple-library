@@ -35,4 +35,8 @@ export class AppComponent extends Destroyable {
         this.authenticationService.switchToLogin()
     }
 
+    logout() {
+        this.authenticationService.logout()
+    }
+
 }

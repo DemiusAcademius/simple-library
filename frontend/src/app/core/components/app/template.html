@@ -6,6 +6,9 @@
         </a>
         <ng-container *ngIf="authentication.status === 'authorized'; else unauthorized">
             {{ authentication.info.username }}
+            <button class="btn btn-outline-success ml-3"
+                    type="button"
+                    (click)="logout()">LOGOUT</button>
         </ng-container>
 
         <ng-template #unauthorized>

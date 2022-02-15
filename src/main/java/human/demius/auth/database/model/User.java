@@ -19,13 +19,13 @@ public class User {
     private String name;
     private String password;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_authorities",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "authority_name"))
     Set<Authority> userAuthorities;
 
-    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
-    private Client client;
+    // @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
+    // private Client client;
 }
