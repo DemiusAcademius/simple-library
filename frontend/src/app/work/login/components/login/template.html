@@ -1,16 +1,57 @@
-<form>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+<form #loginForm="ngForm"
+      (ngSubmit)="onSubmit()"
+      autocomplete="none">
+  <fieldset [disabled]="loginProcess.status !== 'show-form'">
+
+  </fieldset>
+
+  <div class="form-group">
+    <label for="username"
+           class="form-label">Username</label>
+    <input type="text"
+           class="form-control"
+           id="username"
+           #username="ngModel"
+           [(ngModel)]="loginModel.username"
+           name="username"
+           required
+           minlength="4"
+           autofocus
+           [ngClass]="{ 'is-invalid': loginForm.submitted && username.invalid }">
+    <div class="invalid-feedback"
+         *ngIf="loginForm.submitted && username.invalid">
+      <p *ngIf="username.errors?.['required']">Username is required</p>
+      <div *ngIf="username.errors?.['minlength']">Trebuie să aibă cel puțin 4 caractere</div>
+    </div>
   </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
+
+  <div class="form-group">
+    <label for="password"
+           class="form-label">Password</label>
+    <input type="password"
+           class="form-control"
+           id="password"
+           aria-describedby="passwordHelp"
+           #password="ngModel"
+           [(ngModel)]="loginModel.password"
+           [type]="passwordVisible ? 'text' : 'password'"
+           name="password"
+           required
+           pattern="^(?=.*[a-z])(?=.*[A-Z]).{8,}$"
+           [ngClass]="{ 'is-invalid': loginForm.submitted && password.invalid }">
+    <div *ngIf="loginForm.submitted && password.invalid"
+         class="invalid-feedback">
+      <div *ngIf="password.errors?.['required']">Password is required</div>
+      <div *ngIf="password.errors?.['minlength'] || password.errors?.['pattern']">Trebuie să aibă cel puțin 8 caractere
+        și un caracter special</div>
+    </div>
   </div>
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+
+  <div class="form-group">
+    <button type="submit"
+            class="btn btn-primary"
+            [disabled]="!loginForm.valid">
+      {{ loginProcess.status === 'show-form'? 'LOGIN' : 'PRELUCREAREA DATELOR ...'}}
+    </button>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
 </form>
