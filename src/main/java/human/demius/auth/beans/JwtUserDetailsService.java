@@ -2,6 +2,8 @@ package human.demius.auth.beans;
 
 import human.demius.auth.LibraryUserDetails;
 import human.demius.auth.database.repos.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
+    private static final Logger logger = LoggerFactory.getLogger(JwtUserDetailsService.class);
 
     @Autowired
     UserRepository userRepository;
@@ -21,6 +24,9 @@ public class JwtUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         var user = userRepository.findByName(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username));
+
+        logger.info("user " + user.getName() + " has " + user.getUserAuthorities().size());
+
         return LibraryUserDetails.build(user);
     }
 }

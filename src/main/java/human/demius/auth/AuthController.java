@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+// @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -36,7 +36,7 @@ public class AuthController {
     @Autowired
     JwtTokenUtils jwtUtils;
 
-    @PostMapping("/signin")
+    @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
@@ -56,7 +56,7 @@ public class AuthController {
     @GetMapping("/userinfo")
     public UserInfoResponse getUserInfo() {
         var authentication = SecurityContextHolder.getContext().getAuthentication();
-        LibraryUserDetails userDetails = (LibraryUserDetails) authentication.getPrincipal();
+        LibraryUserDetails userDetails = (LibraryUserDetails) authentication.getDetails();
 
         List<String> roles = extractRolesFromUserDetails(userDetails);
 

@@ -11,6 +11,9 @@ export type LoginProcess =
     { status: 'process' } |
     { status: 'error', message: string }
 
+// TODO: for production change minLength with pattern
+// pattern="^(?=.*[a-z])(?=.*[A-Z]).{8,}$"
+
 @Component({
     selector: 'app-login',
     templateUrl: './template.html',
