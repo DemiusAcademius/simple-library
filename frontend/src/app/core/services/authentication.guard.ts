@@ -12,6 +12,8 @@ import { AuthenticationService } from './authentication.service'
 // see: https://angular.io/guide/router-tutorial-toh#canload-guarding-unauthorized-loading-of-feature-modules
 // see: https://angular.io/guide/router#preventing-unauthorized-access
 
+// TODO: test roles !!!
+
 @Injectable({
     providedIn: 'root',
 })
