@@ -12,10 +12,13 @@
         </ng-container>
 
         <ng-template #unauthorized>
-            <button *ngIf="authentication.status === 'unauthorized'"
-                    type="button"
-                    class="btn btn-primary"
-                    (click)="switchToLogin()">LOG IN</button>
+            <ng-container *ngIf="authentication.status === 'unauthorized'">
+                <button type="button"
+                        class="btn btn-primary"
+                        (click)="switchToLogin()">LOG IN</button>
+                <button type="button"
+                        class="btn btn-primary">Inregistreaza-te</button>
+            </ng-container>
         </ng-template>
     </div>
 </nav>
