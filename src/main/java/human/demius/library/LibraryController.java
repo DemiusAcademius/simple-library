@@ -3,6 +3,7 @@ package human.demius.library;
 import human.demius.library.database.repos.BookRepository;
 import human.demius.library.dto.BookInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

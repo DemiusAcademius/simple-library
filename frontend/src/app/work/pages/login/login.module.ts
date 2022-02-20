@@ -10,7 +10,6 @@ import { LoginComponent } from "./components/login";
     imports: [
         CommonModule,
         FormsModule,
-
     ],
     exports: [
         LoginComponent

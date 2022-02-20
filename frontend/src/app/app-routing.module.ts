@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthenticationGuard } from './core/services/authentication.guard';
-import { MainAdminComponent } from './work/admin/components/main';
-import { MainHomeComponent } from './work/home/components/main';
-import { MainLibrarianComponent } from './work/librarian/components/main';
-import { LoginComponent } from './work/login/components/login';
+import { MainAdminComponent } from './work/pages/admin/components/main';
+import { MainHomeComponent } from './work/pages/home/components/main';
+import { MainLibrarianComponent } from './work/pages/librarian/components/main';
+import { LoginComponent } from './work/pages/login/components/login';
 
 const routes: Routes = [
   {

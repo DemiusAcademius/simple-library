@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { Destroyable } from '@app/core/base-components/destroyable';
 import { AuthenticationService } from '@app/core/services/authentication.service';
+import { LibraryService } from '../../services/library.service';
 
 @Component({
     selector: 'app-main-home',
@@ -11,13 +12,16 @@ import { AuthenticationService } from '@app/core/services/authentication.service
 export class MainHomeComponent extends Destroyable {
     constructor(
         private cdr: ChangeDetectorRef,
-        private authenticationService: AuthenticationService) {
+        private authenticationService: AuthenticationService,
+        private libraryService: LibraryService) {
         super()
     }
 
     isAuthorized = false
     userIsLibrarian = false
     userIsAdministrator = false
+
+    books$ = this.libraryService.books$
 
     public ngOnInit(): void {
         this.authenticationService.authentication$
@@ -30,5 +34,6 @@ export class MainHomeComponent extends Destroyable {
                 }
                 this.cdr.detectChanges()
             })
+        this.libraryService.loadAllBooks()
     }
 }

@@ -7,10 +7,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './core/components/app';
 
 import { AppCoreModule } from './core/core.module';
-import { AppAdminModule } from './work/admin/admin.module';
-import { AppHomeModule } from './work/home/home.module';
-import { AppLibrarianModule } from './work/librarian/librarian.module';
-import { AppLoginModule } from './work/login/login.module';
+import { AppAdminModule } from './work/pages/admin/admin.module';
+import { AppHomeModule } from './work/pages/home/home.module';
+import { AppLibrarianModule } from './work/pages/librarian/librarian.module';
+import { AppLoginModule } from './work/pages/login/login.module';
 
 @NgModule({
   declarations: [],

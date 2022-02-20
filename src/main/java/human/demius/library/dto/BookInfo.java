@@ -19,6 +19,9 @@ public record BookInfo(
                 book.getPicture(),
                 book.getPublisher().getName(),
                 book.getPublishYear(),
-                book.getAuthors().stream().map(Author::getName).toList());
+                book.getAuthors()
+                        .stream()
+                        .map(it -> it.getFirst_name() + " " + it.getLast_name())
+                        .toList());
     }
 }

@@ -1,4 +1,13 @@
-<div class="flex-grow-1">LANDING PAGE</div>
+<div *ngIf="books$ |async as books"
+     class="flex-grow-1">
+    <div *ngFor="let book of books">
+        <div>{{ book.name }}</div>
+        <div>{{ book.publisher }} </div>
+        <img src="{{ book.picture }}"
+             width="120"
+             height="120">
+    </div>
+</div>
 
 <div *ngIf="isAuthorized"
      class="d-flex justify-content-end"

@@ -16,7 +16,8 @@ import java.util.Set;
 public class Author {
     @Id
     private int id;
-    private String name;
+    private String first_name;
+    private String last_name;
 
     @ManyToMany
     @JoinTable(
