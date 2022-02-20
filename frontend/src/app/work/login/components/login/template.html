@@ -17,9 +17,9 @@
            required
            minlength="4"
            autofocus
-           [ngClass]="{ 'is-invalid': loginForm.submitted && username.invalid }">
+           [ngClass]="{ 'is-invalid': (username.touched || loginForm.submitted) && username.invalid }">
     <div class="invalid-feedback"
-         *ngIf="loginForm.submitted && username.invalid">
+         *ngIf="(username.touched || loginForm.submitted) && username.invalid">
       <p *ngIf="username.errors?.['required']">Username is required</p>
       <div *ngIf="username.errors?.['minlength']">Trebuie să aibă cel puțin 4 caractere</div>
     </div>
@@ -38,8 +38,8 @@
            name="password"
            required
            minlength="6"
-           [ngClass]="{ 'is-invalid': loginForm.submitted && password.invalid }">
-    <div *ngIf="loginForm.submitted && password.invalid"
+           [ngClass]="{ 'is-invalid': (password.touched || loginForm.submitted) && password.invalid }">
+    <div *ngIf="(password.touched || loginForm.submitted) && password.invalid"
          class="invalid-feedback">
       <div *ngIf="password.errors?.['required']">Password is required</div>
       <div *ngIf="password.errors?.['minlength'] || password.errors?.['pattern']">Trebuie să aibă cel puțin 8 caractere
@@ -50,7 +50,7 @@
   <div class="form-group">
     <button type="submit"
             class="btn btn-primary"
-            [disabled]="!loginForm.valid">
+            [disabled]="!loginForm.valid || loginProcess.status === 'process'">
       {{ loginProcess.status === 'show-form'? 'LOGIN' : 'PRELUCREAREA DATELOR ...'}}
     </button>
   </div>

@@ -15,3 +15,11 @@ INSERT INTO clients
 VALUES
 ('Vassily', ' Petrov', 'Chisinau, Traian 10, ap 1', '+7 (191) 322-22-33)', 3),
 ('Pjotr', ' Vasechkin', 'Novosibirsc, Kosmonavtov 6, ap 100', '+7 (191) 223-33-22)', NULL);
+
+INSERT INTO authors (first_name,last_name) VALUES ('Кип','Торн');
+
+INSERT INTO publishers (name) VALUES ('Манн, Иванов и Фербер');
+
+INSERT INTO books VALUES ('9785000575369','Интерстеллар: наука за кадром', 1, 2014, 'https://www.litres.ru/kip-torn/interstellar-nauka-za-kadrom/chitat-onlayn/');
+
+INSERT INTO book_authors VALUES ('9785000575369', 1);
