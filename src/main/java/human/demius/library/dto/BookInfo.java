@@ -1,6 +1,5 @@
 package human.demius.library.dto;
 
-import human.demius.library.database.model.Author;
 import human.demius.library.database.model.Book;
 
 import java.util.Collection;
