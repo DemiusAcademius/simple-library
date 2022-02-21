@@ -1,11 +1,10 @@
 package human.demius.library;
 
-import human.demius.library.database.model.Author;
 import human.demius.library.database.model.Book;
 import human.demius.library.database.repos.AuthorRepository;
 import human.demius.library.database.repos.BookRepository;
 import human.demius.library.database.repos.PublisherRepository;
-import human.demius.library.dto.AddBookRequestBody;
+import human.demius.library.dto.BookRequestBody;
 import human.demius.library.dto.AuthorInfo;
 import human.demius.library.dto.BookInfo;
 import human.demius.library.dto.PublisherInfo;
@@ -60,7 +59,7 @@ public class LibraryController {
 
     @PostMapping("/books/")
     @Transactional
-    public void addBook(@RequestBody AddBookRequestBody book) {
+    public void addBook(@RequestBody BookRequestBody book) {
         var publisher = publisherRepository.getById(book.getPublisher());
         var authors = Arrays
                 .stream(book.getAuthors())
@@ -77,6 +76,30 @@ public class LibraryController {
                         book.getPicture(),
                         publisher,
                         authors, null, null, null));
+    }
+
+    @PutMapping("/books/{isbn}")
+    @Transactional
+    public void updateBook(@PathVariable String isbn, @RequestBody BookRequestBody book) {
+        var foundBook = bookRepository.getById(isbn);
+
+        if (foundBook.getPublisher().getId() != book.getPublisher()) {
+            // request new bublisher
+            // TODO: change publisher
+        }
+
+        // TODO: change authors
+
+        foundBook.setName(book.getName());
+        foundBook.setPicture(book.getPicture());
+        foundBook.setPublishYear(book.getPublishYear());
+        bookRepository.save(foundBook);
+    }
+
+    @DeleteMapping("/books/{isbn}")
+    @Transactional
+    public void deleteBook(@PathVariable String isbn) {
+        bookRepository.deleteById(isbn);
     }
 
 }

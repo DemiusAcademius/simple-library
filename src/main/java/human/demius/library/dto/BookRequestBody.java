@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class AddBookRequestBody {
+public class BookRequestBody {
     private String isbn;
     private String name;
     private String picture;
