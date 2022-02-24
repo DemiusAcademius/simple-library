@@ -1,13 +1,11 @@
 package human.demius.library;
 
+import human.demius.library.database.model.Author;
 import human.demius.library.database.model.Book;
 import human.demius.library.database.repos.AuthorRepository;
 import human.demius.library.database.repos.BookRepository;
 import human.demius.library.database.repos.PublisherRepository;
-import human.demius.library.dto.BookRequestBody;
-import human.demius.library.dto.AuthorInfo;
-import human.demius.library.dto.BookInfo;
-import human.demius.library.dto.PublisherInfo;
+import human.demius.library.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -31,6 +29,12 @@ public class LibraryController {
                 .stream()
                 .map(AuthorInfo::fromAuthor)
                 .toList();
+    }
+
+    @PostMapping("/authors/")
+    @Transactional
+    public void addAuthor(@RequestBody AuthorRequestBody author) {
+        authorRepository.save(new Author(author.getFirstName(), author.getLastName()));
     }
 
     @Autowired

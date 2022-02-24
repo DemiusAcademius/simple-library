@@ -1,26 +1,27 @@
 <div *ngIf="books$ |async as books"
-     class="flex-grow-1">
-    <div *ngFor="let book of books">
-        <div>{{ book.name }}</div>
-        <div>{{ book.publisher }} </div>
-        <img src="{{ book.picture }}"
-             width="120"
-             height="120">
+     class="d-flex"
+     style="flex-wrap: wrap; gap: 10px">
+    <div *ngFor="let book of books"
+         class="book p-2 shadow-sm">
+        <div style="height: 2em;"><strong>{{ book.name }}</strong></div>
+        <div class="d-flex">
+            <img src="{{ book.picture }}"
+                 width="200"
+                 height="300">
+            <div class="ms-2">
+                <div>{{ book.publisher }} </div>
+                <div>{{ book.isbn }} </div>
+            </div>
+        </div>
     </div>
 </div>
 
 <div *ngIf="isAuthorized"
-     class="d-flex justify-content-end"
-     style="gap: 4px">
-    <button *ngIf="userIsAdministrator"
-            type="submit"
-            class="btn btn-primary">
-        ADMINISTRATOR
-    </button>
+     class="d-flex justify-content-end mt-1"
+     style="gap: 8px;">
+    <a *ngIf="userIsAdministrator"
+       routerLink="/admin">ADMINISTRATOR</a>
 
-    <button *ngIf="userIsLibrarian"
-            type="submit"
-            class="btn btn-primary">
-        LIBRARIAN
-    </button>
+    <a *ngIf="userIsLibrarian"
+       routerLink="/librarian">LIBRARIAN</a>
 </div>

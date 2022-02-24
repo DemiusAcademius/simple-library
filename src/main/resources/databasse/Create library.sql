@@ -29,7 +29,8 @@ CREATE TABLE IF NOT EXISTS publishers (
 CREATE TABLE IF NOT EXISTS authors (
   id SERIAL PRIMARY KEY,
   first_name VARCHAR(50) NOT NULL,
-  last_name VARCHAR(50)
+  last_name VARCHAR(50),
+  UNIQUE(first_name, last_name)
 );
 
 CREATE TABLE IF NOT EXISTS books (

@@ -29,8 +29,8 @@ INSERT INTO publishers (name) VALUES ('Ардис');
 INSERT INTO publishers (name) VALUES ('Альпина Диджитал');
 INSERT INTO publishers (name) VALUES ('Попурри');
 
-INSERT INTO books VALUES ('9785000575369','Интерстеллар: наука за кадром', 1, 2014, 'https://www.litres.ru/kip-torn/interstellar-nauka-za-kadrom/chitat-onlayn/');
-INSERT INTO books VALUES ('9785171149857','Срок времени', 2, 2017, 'https://www.litres.ru/karlo-rovelli/srok-vremeni/chitat-onlayn/');
+INSERT INTO books VALUES ('9785000575369','Интерстеллар: наука за кадром', 1, 2014, 'https://cv4.litres.ru/pub/c/elektronnaya-kniga/cover_415/11294147-kip-torn-interstellar-nauka-za-kadrom.jpg');
+INSERT INTO books VALUES ('9785171149857','Срок времени', 2, 2017, 'https://cv4.litres.ru/pub/c/elektronnaya-kniga/cover_415/48416541-karlo-rovelli-srok-vremeni.jpg');
 INSERT INTO books VALUES ('4607031764114','Понедельник начинается в субботу', 3, 2017, 'https://cv8.litres.ru/pub/c/audiokniga/cover_415/3956285-arkadiy-i-boris-strugackie-ponedelnik-nachinaetsya-v-subbotu-3956285.jpg');
 INSERT INTO books VALUES ('9785961420043','Атлант расправил плечи', 4, 2012, 'https://cv7.litres.ru/pub/c/elektronnaya-kniga/cover_415/4236675-ayn-rend-atlant-raspravil-plechi.jpg');
 INSERT INTO books VALUES ('9789851523241','Богатый папа, бедный папа', 5, 2015, 'https://cv5.litres.ru/pub/c/elektronnaya-kniga/cover_415/119256-robert-kiyosaki-bogatyy-papa-bednyy-papa.jpg');
