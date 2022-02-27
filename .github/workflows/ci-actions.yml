@@ -50,7 +50,7 @@ jobs:
       - name: Build with npm
         run: cd frontend && node_modules/.bin/ng build --aot --named-chunks --optimization
       - name: Build with Maven
-        run: mvn --batch-mode --update-snapshots package
+        run: mvn --batch-mode --update-snapshots -Dmaven.test.skip=true package
       - name: Pack artifacts
         run: |
           zip --junk-paths deployments ./target/library-0.0.1-SNAPSHOT.jar
