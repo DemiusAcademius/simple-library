@@ -42,7 +42,7 @@ jobs:
       - name: Pack artifacts
         run: |
           zip --junk-paths deployments ./target/library-0.0.1-SNAPSHOT.jar
-        -
+
       - name: Create release tag-name
         id: release-tag
         run: echo "::set-output name=tag::$(date +'%y.%m.%d-%H%M')"
